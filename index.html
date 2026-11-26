@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Уютная 3D-игра про кошку: обустраивай дом, играй в мини-игры и собирай монеты.">
+  <meta name="theme-color" content="#f7dce5">
+  <title>Кошкин дом — 3D</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🐾 Кошкин дом</div>
+    <div class="wallet">🪙 <span id="coins">150</span></div>
+  </header>
+
+  <nav class="tabs">
+    <button class="tab active" data-screen="home">🏠 Дом</button>
+    <button class="tab" data-screen="games">🎮 Игры</button>
+    <button class="tab" data-screen="shop">🛍️ Магазин</button>
+  </nav>
+
+  <main>
+    <section id="home" class="screen active">
+      <div class="intro">
+        <div>
+          <h1>Добро пожаловать домой!</h1>
+          <p>Исследуй комнату, заботься о кошке и обустраивай уютное пространство.</p>
+        </div>
+        <div class="cat-mood" id="mood">😺 Кошка счастлива</div>
+      </div>
+      <div class="game-layout">
+        <div class="scene-wrap">
+          <div id="scene" aria-label="Трёхмерная комната с кошкой"></div>
+          <div class="scene-hint">Перетаскивай мышью, чтобы вращать камеру · Колёсико — приблизить</div>
+        </div>
+        <aside class="side-panel">
+          <h2>Моя кошка</h2>
+          <div class="pet-name">Мурка <span>⭐ Уровень 1</span></div>
+          <div class="stat"><label>Сытость</label><div class="bar"><i style="width:85%"></i></div></div>
+          <div class="stat"><label>Настроение</label><div class="bar pink"><i style="width:95%"></i></div></div>
+          <button id="petBtn" class="primary full">💗 Погладить кошку</button>
+          <h2 class="actions-title">Что будет делать Мурка?</h2>
+          <div class="cat-actions">
+            <button class="action-btn" data-cat-action="walk">🚶 Гулять</button>
+            <button class="action-btn" data-cat-action="run">💨 Бегать</button>
+            <button class="action-btn" data-cat-action="jump">🐾 Прыгнуть</button>
+            <button class="action-btn" data-cat-action="sleep">💤 Спать</button>
+            <button class="action-btn" data-cat-action="wash">🧼 Умываться</button>
+            <button class="action-btn" data-cat-action="play">🧶 Играть</button>
+          </div>
+          <h2 class="furn-title">Мебель в комнате</h2>
+          <div id="furnitureList" class="furniture-list"></div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="games" class="screen">
+      <div class="section-heading">
+        <h1>Мини-игры</h1>
+        <p>Играй, зарабатывай монеты и покупай красивые вещи для дома.</p>
+      </div>
+      <div class="game-cards">
+        <article class="game-card">
+          <div class="game-art match-art">🍓 🍋 🍇</div>
+          <h2>Фруктовый пазл</h2>
+          <p>Найди одинаковые пары фруктов. За победу — 25 монет.</p>
+          <button class="primary" id="memoryStart">Играть</button>
+        </article>
+        <article class="game-card locked">
+          <div class="game-art race-art">🏁 🐱 🏎️</div>
+          <h2>Кошачьи гонки</h2>
+          <p>Гоночный режим появится в следующем обновлении.</p>
+          <span class="soon">Скоро</span>
+        </article>
+        <article class="game-card locked">
+          <div class="game-art garden-art">🌷 🪴 🦋</div>
+          <h2>Кошачий сад</h2>
+          <p>Выращивай цветы, собирай урожай и украшай двор.</p>
+          <span class="soon">Скоро</span>
+        </article>
+      </div>
+      <div id="miniGame" class="mini-game hidden"></div>
+    </section>
+
+    <section id="shop" class="screen">
+      <div class="section-heading">
+        <h1>Магазин мебели</h1>
+        <p>Покупай предметы и добавляй их в свою комнату.</p>
+      </div>
+      <div id="shopItems" class="shop-grid"></div>
+    </section>
+  </main>
+
+  <footer>Кошкин дом · Первая версия 3D</footer>
+  <script type="module" src="game.js"></script>
+</body>
+</html>
