@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7e9e1">
+  <meta name="description" content="Муркин мир — уютная 3D-игра про кошку, дом, сад, головоломки и приключения.">
+  <title>Муркин мир — уютная игра про кошку</title>
+  <link rel="icon" href="./assets/paw.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.164.1/examples/jsm/"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="app-bg-shape shape-one"></div>
+  <div class="app-bg-shape shape-two"></div>
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Муркин мир — главная">
+      <span class="brand-mark">🐾</span>
+      <span class="brand-copy"><strong>МУРКИН МИР</strong><small>маленький мир больших приключений</small></span>
+    </a>
+    <div class="top-resources">
+      <div class="resource-pill coin-pill"><span>🪙</span><b id="coinCount">180</b></div>
+      <div class="resource-pill level-pill"><span>⭐</span><b id="levelCount">1 уровень</b></div>
+      <div class="xp-wrap"><div class="xp-label"><span>Опыт</span><b id="xpText">0 / 100</b></div><div class="xp-track"><i id="xpFill"></i></div></div>
+    </div>
+  </header>
+
+  <nav class="main-nav" aria-label="Главное меню">
+    <button class="nav-btn active" data-view="home"><span>🏠</span>Дом</button>
+    <button class="nav-btn" data-view="cat"><span>🐱</span>Мурка</button>
+    <button class="nav-btn" data-view="garden"><span>🌷</span>Сад</button>
+    <button class="nav-btn" data-view="shop"><span>🛍️</span>Магазин</button>
+    <button class="nav-btn" data-view="games"><span>🎮</span>Мини-игры</button>
+    <button class="nav-btn" data-view="quests"><span>📜</span>Задания</button>
+  </nav>
+
+  <main class="main-shell">
+    <section id="worldLayout" class="world-layout">
+      <div class="scene-card">
+        <div class="scene-topline">
+          <div><span class="eyebrow" id="sceneEyebrow">ТВОЙ УЮТНЫЙ УГОЛОК</span><h1 id="sceneTitle">Домик Мурки</h1></div>
+          <div class="scene-badges"><span class="live-badge"><i></i> 3D-мир</span><button class="icon-btn" id="cameraReset" title="Вернуть камеру">↻</button></div>
+        </div>
+        <div class="scene-wrap">
+          <canvas id="worldCanvas" aria-label="Интерактивная трёхмерная сцена"></canvas>
+          <div class="scene-caption" id="sceneCaption"><span>☀️</span> Уютный день в домике</div>
+          <div class="scene-loading" id="sceneLoading">Создаём мир Мурки…</div>
+          <div class="scene-fallback hidden" id="sceneFallback">3D-графика не запустилась в этом браузере. Остальные игровые режимы доступны.</div>
+        </div>
+        <div class="scene-toolbar">
+          <button class="scene-tab active" data-world="home">🛋️ Комната</button>
+          <button class="scene-tab" data-world="garden">🌳 Двор и сад</button>
+          <span class="drag-hint">Поворачивай вид мышкой или пальцем</span>
+        </div>
+      </div>
+      <aside class="side-card" id="panel" aria-live="polite"></aside>
+    </section>
+
+    <section id="gameView" class="game-view hidden" aria-live="polite"></section>
+  </main>
+
+  <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+  <footer class="footer"><span>🐾 Муркин мир</span><span>Сохраняй прогресс и украшай свой маленький мир</span></footer>
+
+  <script type="module" src="./game.js"></script>
+</body>
+</html>
